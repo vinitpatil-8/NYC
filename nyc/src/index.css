@@ -1,3 +1,72 @@
+/* Fonts */
+
+
+/* fredoka-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Fredoka';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/fredoka-v17-latin-regular.woff2') format('woff2');
+}
+
+/* fredoka-600 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Fredoka';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/fredoka-v17-latin-600.woff2') format('woff2');
+}
+
+/* fredoka-700 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Fredoka';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/fredoka-v17-latin-700.woff2') format('woff2');
+}
+
+/* luckiest-guy-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Luckiest Guy';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/luckiest-guy-v25-latin-regular.woff2') format('woff2');
+}
+
+/* Color Pallete */
+
+@layer base {
+    :root {
+        --background-col: #FFF8F8;
+        --surface-col: #FFE3E3;
+        --text-col: #545863;
+        --accent-col: #00E8FC;
+        --primary-col: #F96E46;
+        --highlight-col: #F9C846;
+    }
+
+    .dark {
+        color-scheme: dark;
+
+        --background-col: #0F1016;
+        --surface-col: #1E2028;
+        --text-col: #E5E7EB;
+        --accent-col: #00E8FC;
+        --primary-col: #F96E46;
+        --highlight-col: #F9C846;
+    }
+
+    body {
+        background-color: var(--background-col);
+        color: var(--text-col);
+    }
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
