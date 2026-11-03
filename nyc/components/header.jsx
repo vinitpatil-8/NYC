@@ -1,11 +1,57 @@
 import React from 'react'
+import FuzzyText from './FuzzyText';
 
 const header = () => {
   return (
-    <div className='md:h-40 sm:h-38 h-20 w-[100vw] flex items-center sm:px-5 px-2'>
+    <div className='md:h-40 sm:h-38 h-20 w-full flex items-center'>
       <div className='flex flex-col items-center md:h-28 sm:h-25 h-15 w-fit'>
-        <p className='font-lucky flex items-center tracking-wide md:text-7xl sm:text-5xl text-4xl w-fit'>NYC</p>
-        <p className='font-fredoka font-semibold flex items-end md:text-2xl sm:text-xl text-lg w-fit'>Not Your Calc</p>
+        <FuzzyText className='font-lucky flex items-center tracking-wide'
+          colorSplit={0}
+          trigger="hover"
+          direction="horizontal"
+          baseIntensity={0}
+          hoverIntensity={0.1}
+          fuzzRange={30}
+          sliceSize={1}
+          fps={60}
+          transitionDuration={0}
+          intro
+          introDuration={1400}
+          letterSpacing={2}
+          enableHover
+          clickEffect={false}
+          glitchMode={false}
+          glitchInterval={2000}
+          glitchDuration={200}
+          fontSize="clamp(36px, 7vw, 72px)"
+        >
+          NYC
+        </FuzzyText>
+
+
+        <FuzzyText className='font-fredoka font-semibold flex items-end'
+          colorSplit={0}
+          trigger="hover"
+          direction="horizontal"
+          baseIntensity={0}
+          hoverIntensity={0.1}
+          fuzzRange={30}
+          sliceSize={1}
+          fps={60}
+          transitionDuration={0}
+          intro
+          introDuration={1400}
+          letterSpacing={0}
+          enableHover
+          clickEffect={false}
+          glitchMode={false}
+          glitchInterval={2000}
+          glitchDuration={200}
+          fontSize="clamp(14px, 2.5vw, 24px)"
+        >
+          Not Your Calc
+        </FuzzyText>
+
       </div>
     </div>
   )
