@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "allowJs": true,        // 1. Allows TypeScript to process your .jsx files
+    "checkJs": false,       // 2. Prevents TS from checking errors inside your .jsx files
+    "jsx": "react-jsx",     // 3. Tells TS how to handle the React JSX syntax
+    "noEmit": true          // 4. Let's Vite/Babel handle compilation while TS handles types
+  },
+  "include": ["src"]        // Makes sure TypeScript looks at your source directory
+}

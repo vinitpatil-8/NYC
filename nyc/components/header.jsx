@@ -1,10 +1,11 @@
 import React from 'react'
 import FuzzyText from './FuzzyText';
+import { EyeTracking } from "./eyes";
 
 const header = () => {
   return (
     <div className='md:h-40 sm:h-38 h-20 w-full flex items-center'>
-      <div className='flex flex-col items-center md:h-28 sm:h-25 h-15 w-fit'>
+      <div className='flex z-10 flex-col items-center md:h-28 sm:h-25 h-15 w-fit'>
         <FuzzyText className='font-lucky flex items-center tracking-wide'
           colorSplit={0}
           trigger="hover"
@@ -53,6 +54,10 @@ const header = () => {
         </FuzzyText>
 
       </div>
+      <div className='flex w-[100vw] absolute justify-center'>
+        <EyeTracking eyeSize={90} blinkInterval={0} gap={50} />
+      </div>
+      
     </div>
   )
 }
