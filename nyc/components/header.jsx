@@ -1,12 +1,25 @@
 import React from 'react'
-import FuzzyText from './FuzzyText';
-import { EyeTracking } from "./eyes";
+import FuzzyText from './FuzzyText'
+import { EyeTracking } from './eyes'
 
-const header = () => {
+const Header = () => {
   return (
-    <div className='md:h-40 sm:h-38 h-20 w-full flex items-center'>
-      <div className='flex z-10 flex-col items-center md:h-28 sm:h-25 h-15 w-fit'>
-        <FuzzyText className='font-lucky flex items-center tracking-wide'
+    <header className="
+      relative flex items-center
+      w-full h-20 sm:h-28 md:h-36
+      px-4 sm:px-6
+      shrink-0
+    ">
+
+      {/* Logo */}
+      <div className="
+        relative z-10
+        flex flex-col items-center
+        w-fit shrink-0
+      ">
+
+        <FuzzyText
+          className="font-lucky tracking-wide"
           colorSplit={0}
           trigger="hover"
           direction="horizontal"
@@ -24,13 +37,13 @@ const header = () => {
           glitchMode={false}
           glitchInterval={2000}
           glitchDuration={200}
-          fontSize="clamp(36px, 7vw, 72px)"
+          fontSize="clamp(32px, 6vw, 72px)"
         >
           NYC
         </FuzzyText>
 
-
-        <FuzzyText className='font-fredoka font-semibold flex items-end'
+        <FuzzyText
+          className="font-fredoka font-semibold"
           colorSplit={0}
           trigger="hover"
           direction="horizontal"
@@ -48,18 +61,35 @@ const header = () => {
           glitchMode={false}
           glitchInterval={2000}
           glitchDuration={200}
-          fontSize="clamp(14px, 2.5vw, 24px)"
+          fontSize="clamp(12px, 2vw, 24px)"
         >
           Not Your Calc
         </FuzzyText>
 
       </div>
-      <div className='flex w-[100vw] absolute justify-center'>
-        <EyeTracking eyeSize={90} blinkInterval={0} gap={50} />
+
+      {/* Eyes */}
+      <div className="
+  absolute inset-y-0 right-3
+  flex items-center z-0
+  sm:inset-0 sm:justify-center
+">
+        <div className="
+          scale-[0.45]
+          sm:scale-[0.7]
+          md:scale-100
+          pointer-events-auto
+        ">
+          <EyeTracking
+            eyeSize={window.innerWidth < 640 ? 80 : 90}
+            gap={window.innerWidth < 640 ? 20 : 50}
+            blinkInterval={0}
+          />
+        </div>
       </div>
-      
-    </div>
+
+    </header>
   )
 }
 
-export default header
+export default Header

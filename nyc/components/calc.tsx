@@ -188,54 +188,81 @@ const calc = () => {
   }
 
   return (
-    <div className='sm:w-[50vw] w-[100vw] sm:h-[80vh] h-[70vh] flex items-center justify-end'>
+    <div className="
+  w-full min-w-0 h-full
+  flex items-center
+  justify-center sm:justify-end
+  px-4 sm:pl-2 sm:pr-8
+  py-4 sm:py-0
+">
       {/* container */}
-      <div className='bg-app-surface border-2 border-solid border-app-bg hover:shadow-2xl flex flex-col py-5 items-center gap-5 justify-center hover:mb-1 transition-all duration-200 rounded-3xl h-[95%] shadow-sm w-[85%] max-w-[420px]'>
+      <div className="
+  bg-app-surface
+  border-2 border-app-bg
+  flex flex-col items-center
+  gap-4 p-4 sm:p-5
+  rounded-3xl shadow-sm
+  transition-shadow duration-200
+  hover:shadow-2xl
+  w-full max-w-[420px]
+  h-[min(68dvh,560px)]
+  sm:h-[min(80dvh,620px)]
+">
         {/* screen */}
-        <div className='w-[90%] h-[25%] bg-app-bg rounded-3xl p-5 flex flex-col justify-between overflow-hidden'>
+        <div className="
+  w-full flex-[0_0_25%] min-h-0
+  bg-app-bg rounded-3xl
+  p-4 sm:p-5
+  flex flex-col justify-between
+  overflow-hidden
+">
           {/* Expression */}
-          <div className="text-right text-lg text-app-text/60">
+          <div className="text-right text-sm sm:text-lg text-app-text/60 truncate whitespace-nowrap">
             {expression}
           </div>
 
           {/* Result */}
-          <div className="text-right text-4xl font-bold font-fredoka text-app-text truncate">
+          <div className="text-right text-3xl sm:text-4xl font-bold font-fredoka text-app-text truncate whitespace-nowrap">
             {result}
           </div>
         </div>
         {/* buttons */}
-        <div className='w-[90%] h-[75%] flex flex-col justify-between'>
+        <div className="
+  w-full flex-1 min-h-0
+  grid grid-cols-4 grid-rows-5
+  gap-2
+">
           {/* rows */}
-          <div className='flex flex-row w-full h-[20%] justify-between'>
+          
             <CalcButton content="C" clickFunc={clear} hoverBgColor="hover:bg-app-bg" textColor="text-brand" bgColor="bg-app-surface" />
             <CalcButton content="(" clickFunc={() => calcInput("(")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
             <CalcButton content=")" clickFunc={() => calcInput(")")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
             <CalcButton content="/" clickFunc={() => calcInput("/")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-          </div>
-          <div className='flex flex-row w-full h-[20%] justify-between'>
+          
+          
             <CalcButton content="7" clickFunc={() => calcInput("7")} border='border border-solid border-app-surface' />
             <CalcButton content="8" clickFunc={() => calcInput("8")} border='border border-solid border-app-surface' />
             <CalcButton content="9" clickFunc={() => calcInput("9")} border='border border-solid border-app-surface' />
             <CalcButton content="×" clickFunc={() => calcInput("×")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-          </div>
-          <div className='flex flex-row w-full h-[20%] justify-between'>
+          
+          
             <CalcButton content="4" clickFunc={() => calcInput("4")} border='border border-solid border-app-surface' />
             <CalcButton content="5" clickFunc={() => calcInput("5")} border='border border-solid border-app-surface' />
             <CalcButton content="6" clickFunc={() => calcInput("6")} border='border border-solid border-app-surface' />
             <CalcButton content="-" clickFunc={() => calcInput("-")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-          </div>
-          <div className='flex flex-row w-full h-[20%] justify-between'>
+          
+          
             <CalcButton content="1" clickFunc={() => calcInput("1")} border='border border-solid border-app-surface' />
             <CalcButton content="2" clickFunc={() => calcInput("2")} border='border border-solid border-app-surface' />
             <CalcButton content="3" clickFunc={() => calcInput("3")} border='border border-solid border-app-surface' />
             <CalcButton content="+" clickFunc={() => calcInput("+")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-          </div>
-          <div className='flex flex-row w-full h-[20%] justify-between'>
+          
+          
             <CalcButton content="del" clickFunc={delInput} hoverBgColor="hover:bg-app-bg" textColor="text-brand" bgColor="bg-app-surface" />
             <CalcButton content="0" clickFunc={() => calcInput("0")} border='border border-solid border-app-surface' />
             <CalcButton content="." clickFunc={() => calcInput(".")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
             <CalcButton content="=" clickFunc={showResult} hoverBgColor="hover:bg-highlight" bgColor="bg-brand" />
-          </div>
+          
 
         </div>
       </div>
