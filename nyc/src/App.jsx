@@ -5,7 +5,7 @@ import Roast from '../components/roast'
 
 const App = () => {
   return (
-    <div className="min-h-dvh w-full flex flex-col bg-app-bg overflow-x-hidden">
+    <div className="app-background w-full flex flex-col overflow-x-hidden">
 
       <Header />
 

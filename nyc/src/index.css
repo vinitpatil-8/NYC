@@ -3,68 +3,140 @@
 
 /* fredoka-regular - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Fredoka';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../assets/fonts/fredoka-v17-latin-regular.woff2') format('woff2');
+  font-display: swap;
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/fredoka-v17-latin-regular.woff2') format('woff2');
 }
 
 /* fredoka-600 - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Fredoka';
-    font-style: normal;
-    font-weight: 600;
-    src: url('../assets/fonts/fredoka-v17-latin-600.woff2') format('woff2');
+  font-display: swap;
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/fredoka-v17-latin-600.woff2') format('woff2');
 }
 
 /* fredoka-700 - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Fredoka';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../assets/fonts/fredoka-v17-latin-700.woff2') format('woff2');
+  font-display: swap;
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/fredoka-v17-latin-700.woff2') format('woff2');
 }
 
 /* luckiest-guy-regular - latin */
 @font-face {
-    font-display: swap;
-    font-family: 'Luckiest Guy';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../assets/fonts/luckiest-guy-v25-latin-regular.woff2') format('woff2');
+  font-display: swap;
+  font-family: 'Luckiest Guy';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/luckiest-guy-v25-latin-regular.woff2') format('woff2');
 }
 
 /* Color Pallete */
 
 @layer base {
-    :root {
-        --background-col: #FFF8F8;
-        --surface-col: #FFE3E3;
-        --text-col: #545863;
-        --accent-col: #00E8FC;
-        --primary-col: #F96E46;
-        --highlight-col: #F9C846;
-    }
+  :root {
+    --background-col: #FFF8F8;
+    --surface-col: #FFE3E3;
+    --text-col: #545863;
+    --accent-col: #00E8FC;
+    --primary-col: #F96E46;
+    --highlight-col: #F9C846;
 
-    .dark {
-        color-scheme: dark;
+    --grid-line: rgba(84, 88, 99, 0.07);
+    --glow-peach: rgba(249, 110, 70, 0.13);
+    --glow-aqua: rgba(0, 232, 252, 0.12);
+    --glow-gold: rgba(249, 200, 70, 0.12);
+    --pulse-col: rgba(0, 180, 195, 0.65);
+  }
 
-        --background-col: #0F1016;
-        --surface-col: #1E2028;
-        --text-col: #E5E7EB;
-        --accent-col: #00E8FC;
-        --primary-col: #F96E46;
-        --highlight-col: #F9C846;
-    }
+  .dark {
+    color-scheme: dark;
 
-    body {
-        background-color: var(--background-col);
-        color: var(--text-col);
-    }
+    --background-col: #0F1016;
+    --surface-col: #1E2028;
+    --text-col: #E5E7EB;
+    --accent-col: #00E8FC;
+    --primary-col: #F96E46;
+    --highlight-col: #F9C846;
+
+    --grid-line: rgba(0, 232, 252, 0.09);
+    --glow-peach: rgba(249, 110, 70, 0.13);
+    --glow-aqua: rgba(0, 232, 252, 0.13);
+    --glow-gold: rgba(249, 200, 70, 0.08);
+    --pulse-col: rgba(0, 232, 252, 0.75);
+  }
+
+  body {
+    background-color: var(--background-col);
+    color: var(--text-col);
+  }
 }
+
+.app-background {
+  min-height: 100dvh;
+  position: relative;
+  isolation: isolate;
+  background-color: #FFF8F8;
+
+  background-image:
+    radial-gradient(circle at 15% 35%,
+      rgba(249, 110, 70, 0.10),
+      transparent 30%),
+    radial-gradient(circle at 85% 65%,
+      rgba(0, 232, 252, 0.10),
+      transparent 32%),
+    linear-gradient(rgba(84, 88, 99, 0.045) 1px,
+      transparent 1px),
+    linear-gradient(90deg,
+      rgba(84, 88, 99, 0.045) 1px,
+      transparent 1px);
+
+  background-size:
+    auto,
+    auto,
+    44px 44px,
+    44px 44px;
+}
+
+/* Gentle ambient movement */
+.app-background::before {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+
+  background: radial-gradient(circle at 50% 50%,
+      rgba(249, 200, 70, 0.12),
+      transparent 40%);
+
+  animation: ambientPulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes ambientPulse {
+  from {
+    transform: scale(0.92);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-background::before {
+    animation: none;
+  }
+}
+
 
 
 @tailwind base;
