@@ -2,7 +2,7 @@ import React from 'react'
 import FuzzyText from './FuzzyText'
 import { EyeTracking } from './eyes'
 
-const Header = () => {
+const Header = ({ isDark, onToggleTheme }) => {
   return (
     <header className="
       relative flex items-center
@@ -86,6 +86,19 @@ const Header = () => {
             blinkInterval={0}
           />
         </div>
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+          className="absolute right-4 top-3 z-20 rounded-full px-3 py-2 font-fredoka font-semibold shadow-md transition-transform hover:scale-105"
+          style={{
+            backgroundColor: 'var(--surface-col)',
+            color: 'var(--text-col)',
+            border: '1px solid var(--grid-line)'
+          }}
+        >
+          {isDark ? '☀️ Light' : '🌙 Dark'}
+        </button>
       </div>
 
     </header>

@@ -82,61 +82,83 @@
   min-height: 100dvh;
   position: relative;
   isolation: isolate;
-  background-color: #FFF8F8;
+  overflow: hidden;
+
+  background-color: var(--background-col);
 
   background-image:
-    radial-gradient(circle at 15% 35%,
-      rgba(249, 110, 70, 0.10),
-      transparent 30%),
-    radial-gradient(circle at 85% 65%,
-      rgba(0, 232, 252, 0.10),
-      transparent 32%),
-    linear-gradient(rgba(84, 88, 99, 0.045) 1px,
-      transparent 1px),
-    linear-gradient(90deg,
-      rgba(84, 88, 99, 0.045) 1px,
-      transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
 
-  background-size:
-    auto,
-    auto,
-    44px 44px,
-    44px 44px;
+  background-size: 48px 48px;
 }
 
-/* Gentle ambient movement */
+/* Moving ambient glows */
 .app-background::before {
   content: "";
-  position: absolute;
-  inset: -15%;
-  z-index: -1;
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
   pointer-events: none;
 
-  background: radial-gradient(circle at 50% 50%,
-      rgba(249, 200, 70, 0.12),
-      transparent 40%);
+  background:
+    radial-gradient(circle at 15% 30%, var(--glow-peach), transparent 30%),
+    radial-gradient(circle at 80% 70%, var(--glow-aqua), transparent 32%),
+    radial-gradient(circle at 50% 90%, var(--glow-gold), transparent 30%);
 
-  animation: ambientPulse 9s ease-in-out infinite alternate;
+  animation: ambientDrift 10s ease-in-out infinite alternate;
 }
 
-@keyframes ambientPulse {
+/* Subtle pulsing grid intersections */
+.app-background::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle, var(--pulse-col) 1.2px, transparent 2px);
+
+  background-size: 96px 96px;
+  background-position: 48px 48px;
+
+  animation: gridPulse 4s ease-in-out infinite alternate;
+}
+
+.app-background > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ambientDrift {
   from {
-    transform: scale(0.92);
-    opacity: 0.4;
+    transform: translate(-1%, -1%) scale(0.96);
+    opacity: 0.55;
   }
 
   to {
-    transform: scale(1.08);
-    opacity: 0.8;
+    transform: translate(1%, 1%) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes gridPulse {
+  from {
+    opacity: 0.12;
+  }
+
+  to {
+    opacity: 0.42;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .app-background::before {
+  .app-background::before,
+  .app-background::after {
     animation: none;
   }
 }
-
 
 
 @tailwind base;

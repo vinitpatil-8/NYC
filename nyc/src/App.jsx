@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../components/header'
 import Calc from '../components/calc'
 import Roast from '../components/roast'
 
 const App = () => {
-  return (
-    <div className="app-background w-full flex flex-col overflow-x-hidden">
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem('nyc-theme') === 'dark'
+  )
 
-      <Header />
+  useEffect(() => {
+    localStorage.setItem('nyc-theme', isDark ? 'dark' : 'light')
+  }, [isDark])
+
+  const toggleTheme = () => {
+    setIsDark(prev => !prev)
+  }
+
+  return (
+    <div className={`${isDark ? 'dark' : ''} app-background w-full flex flex-col overflow-x-hidden`}>
+
+      <Header
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
+      />
 
       <main className="flex-1 min-h-0 w-full grid grid-cols-1 sm:grid-cols-2">
 
