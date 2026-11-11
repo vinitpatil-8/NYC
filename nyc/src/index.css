@@ -42,6 +42,7 @@
 @layer base {
   :root {
     --background-col: #FFF8F8;
+    --button-col: #FFF8F8;
     --surface-col: #FFE3E3;
     --text-col: #545863;
     --accent-col: #00E8FC;
@@ -59,10 +60,11 @@
     color-scheme: dark;
 
     --background-col: #0F1016;
+    --button-col: #0F1016; /* tba */
     --surface-col: #1E2028;
     --text-col: #E5E7EB;
-    --accent-col: #00E8FC;
-    --primary-col: #F96E46;
+    --accent-col: #545863;
+    --primary-col: #000000;
     --highlight-col: #F9C846;
 
     --grid-line: rgba(0, 232, 252, 0.09);

@@ -14,6 +14,7 @@ export default {
       },
       colors: {
         "app-bg": "var(--background-col)",
+        "button-bg": "var(--button-col)",
         "app-surface": "var(--surface-col)",
         "app-text": "var(--text-col)",
         accent: "var(--accent-col)",

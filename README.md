@@ -11,3 +11,10 @@ eyes from craftwork.design
 
 
 added mathjs for evaluating the results
+added lucide icon
+dark-light mode component from lightswind ui
+icons from fontawesome
+added footer
+UI is 100% done, just need to work on the roast system now
+
+i want the calc in the middle and then transitioning to the assigned position once user presses his first ever equals to and the roast appears from there on the calc stays in its assigned position

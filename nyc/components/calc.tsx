@@ -234,34 +234,34 @@ const calc = () => {
 ">
           {/* rows */}
           
-            <CalcButton content="C" clickFunc={clear} hoverBgColor="hover:bg-app-bg" textColor="text-brand" bgColor="bg-app-surface" />
-            <CalcButton content="(" clickFunc={() => calcInput("(")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-            <CalcButton content=")" clickFunc={() => calcInput(")")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-            <CalcButton content="/" clickFunc={() => calcInput("/")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
+            <CalcButton content="C" clickFunc={clear} hoverBgColor="hover:bg-[#FFF8F8]" textColor="text-brand" bgColor="bg-app-surface" />
+            <CalcButton content="(" clickFunc={() => calcInput("(")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
+            <CalcButton content=")" clickFunc={() => calcInput(")")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="/" clickFunc={() => calcInput("/")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
           
           
-            <CalcButton content="7" clickFunc={() => calcInput("7")} border='border border-solid border-app-surface' />
-            <CalcButton content="8" clickFunc={() => calcInput("8")} border='border border-solid border-app-surface' />
-            <CalcButton content="9" clickFunc={() => calcInput("9")} border='border border-solid border-app-surface' />
-            <CalcButton content="×" clickFunc={() => calcInput("×")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
+            <CalcButton content="7" clickFunc={() => calcInput("7")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="8" clickFunc={() => calcInput("8")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="9" clickFunc={() => calcInput("9")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="×" clickFunc={() => calcInput("×")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
           
           
-            <CalcButton content="4" clickFunc={() => calcInput("4")} border='border border-solid border-app-surface' />
-            <CalcButton content="5" clickFunc={() => calcInput("5")} border='border border-solid border-app-surface' />
-            <CalcButton content="6" clickFunc={() => calcInput("6")} border='border border-solid border-app-surface' />
-            <CalcButton content="-" clickFunc={() => calcInput("-")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
+            <CalcButton content="4" clickFunc={() => calcInput("4")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="5" clickFunc={() => calcInput("5")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="6" clickFunc={() => calcInput("6")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="-" clickFunc={() => calcInput("-")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
           
           
-            <CalcButton content="1" clickFunc={() => calcInput("1")} border='border border-solid border-app-surface' />
-            <CalcButton content="2" clickFunc={() => calcInput("2")} border='border border-solid border-app-surface' />
-            <CalcButton content="3" clickFunc={() => calcInput("3")} border='border border-solid border-app-surface' />
-            <CalcButton content="+" clickFunc={() => calcInput("+")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
+            <CalcButton content="1" clickFunc={() => calcInput("1")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="2" clickFunc={() => calcInput("2")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="3" clickFunc={() => calcInput("3")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="+" clickFunc={() => calcInput("+")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
           
           
-            <CalcButton content="del" clickFunc={delInput} hoverBgColor="hover:bg-app-bg" textColor="text-brand" bgColor="bg-app-surface" />
-            <CalcButton content="0" clickFunc={() => calcInput("0")} border='border border-solid border-app-surface' />
-            <CalcButton content="." clickFunc={() => calcInput(".")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" />
-            <CalcButton content="=" clickFunc={showResult} hoverBgColor="hover:bg-highlight" bgColor="bg-brand" />
+            <CalcButton content="del" clickFunc={delInput} hoverBgColor="hover:bg-[#FFF8F8]" textColor="text-brand" bgColor="bg-app-surface" />
+            <CalcButton content="0" clickFunc={() => calcInput("0")} border='border border-solid border-app-surface' hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="." clickFunc={() => calcInput(".")} hoverBgColor="hover:bg-highlight" bgColor="bg-accent" hoverTextColor='hover:text-app-surface' />
+            <CalcButton content="=" clickFunc={showResult} hoverBgColor="hover:bg-highlight" bgColor="bg-brand" hoverTextColor='hover:text-app-surface' />
           
 
         </div>

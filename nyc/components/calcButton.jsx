@@ -15,9 +15,10 @@ const calcButton = (props) => {
         transition-all duration-200
         active:scale-95
         ${props.border || ''}
-        ${props.textColor || 'text-black'}
+        ${props.textColor || 'text-app-text'}
         ${props.hoverBgColor || 'hover:bg-accent'}
-        ${props.bgColor || 'bg-app-bg'}
+        ${props.hoverTextColor}
+        ${props.bgColor || 'bg-button-bg'}
       `}
     >
       {props.content}
