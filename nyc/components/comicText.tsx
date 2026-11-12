@@ -14,7 +14,7 @@ export function ComicText({
   children,
   className,
   style,
-  fontSize = 5,
+  fontSize = 3,
 }: ComicTextProps) {
   if (typeof children !== "string") {
     throw new Error("children must be a string")
@@ -27,7 +27,7 @@ export function ComicText({
     <motion.div
       className={cn("text-center select-none", className)}
       style={{
-        fontSize: `${fontSize}rem`,
+        fontSize: `clamp(2rem, 8vw, ${fontSize}rem)`,
         fontFamily: "'Bangers', 'Comic Sans MS', 'Impact', sans-serif",
         fontWeight: "900",
         WebkitTextStroke: `${fontSize * 0.35}px #000000`, // Thick black outline
