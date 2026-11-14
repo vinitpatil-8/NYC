@@ -3,7 +3,7 @@ import FuzzyText from './FuzzyText'
 import { EyeTracking } from './eyes'
 import { ToggleTheme } from "./toggle-theme";
 
-const Header = () => {
+const Header = ({ eyeMood = "idle" }) => {
   return (
     <header className="
       relative flex items-center
@@ -82,6 +82,7 @@ const Header = () => {
           pointer-events-auto
         ">
           <EyeTracking
+            mood={eyeMood}
             eyeSize={window.innerWidth < 640 ? 80 : 90}
             gap={window.innerWidth < 640 ? 20 : 50}
             blinkInterval={0}

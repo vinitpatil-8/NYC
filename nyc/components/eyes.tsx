@@ -4,6 +4,8 @@ import * as React from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { cn } from "../src/lib/utils"
 
+export type EyeMood = "idle" | "roast" | "mild" | "special" | "error" | "calm"
+
 interface EyeTrackingProps {
   /** Additional CSS classes */
   className?: string
@@ -37,6 +39,8 @@ interface EyeTrackingProps {
   reactivePupil?: boolean
   /** Eyelid visibility */
   showEyelids?: boolean
+  /** Expression sent by the roast engine */
+  mood?: EyeMood
 }
 
 interface EyeProps {
@@ -55,6 +59,7 @@ interface EyeProps {
   mouseX: React.MutableRefObject<number>
   mouseY: React.MutableRefObject<number>
   index: number
+  mood: EyeMood
 }
 
 function Eye({
@@ -72,6 +77,8 @@ function Eye({
   showEyelids,
   mouseX,
   mouseY,
+  index,
+  mood,
 }: EyeProps) {
   const eyeRef = React.useRef<HTMLDivElement>(null)
   const [isBlinking, setIsBlinking] = React.useState(false)
@@ -85,6 +92,19 @@ function Eye({
   const irisSize = eyeSize * 0.45
   const pupilSize = irisSize * 0.5
   const maxOffset = (eyeSize / 2 - irisSize / 2) * pupilRange
+
+  // Each mood gives the eyes a slightly different expression.
+  const moodLook = {
+    idle:    { scaleY: 1,    scaleX: 1,    rotate: 0,  pupilX: 0,    pupilY: 0 },
+    roast:   { scaleY: 0.76, scaleX: 1.06, rotate: index === 0 ? -3 : 3, pupilX: 0.22, pupilY: 0.02 },
+    mild:    { scaleY: 0.90, scaleX: 1.02, rotate: index === 0 ? -1 : 1, pupilX: 0.10, pupilY: 0 },
+    special: { scaleY: 1.13, scaleX: 1.05, rotate: 0,  pupilX: 0,    pupilY: -0.12 },
+    error:   { scaleY: 1.16, scaleX: 1.05, rotate: index === 0 ? -3 : 3, pupilX: 0, pupilY: -0.08 },
+    calm:    { scaleY: 0.97, scaleX: 1,    rotate: 0,  pupilX: 0,    pupilY: 0 },
+  }[mood]
+
+  const moodPupilOffsetX = maxOffset * moodLook.pupilX
+  const moodPupilOffsetY = maxOffset * moodLook.pupilY
 
   // Blink animation
   React.useEffect(() => {
@@ -133,8 +153,12 @@ function Eye({
       const normalizedDistance = clampedDistance / (maxOffset * 3)
       const offset = normalizedDistance * maxOffset
 
-      x.set(Math.cos(angle) * offset)
-      y.set(Math.sin(angle) * offset)
+      // Keep following the cursor, but add a tiny mood-specific glance.
+      const targetX = Math.cos(angle) * offset + moodPupilOffsetX
+      const targetY = Math.sin(angle) * offset + moodPupilOffsetY
+
+      x.set(Math.max(-maxOffset, Math.min(maxOffset, targetX)))
+      y.set(Math.max(-maxOffset, Math.min(maxOffset, targetY)))
 
       // Reactive pupil dilation based on distance
       if (reactivePupil) {
@@ -147,7 +171,7 @@ function Eye({
 
     animFrame = requestAnimationFrame(update)
     return () => cancelAnimationFrame(animFrame)
-  }, [x, y, maxOffset, reactivePupil, mouseX, mouseY])
+  }, [x, y, maxOffset, reactivePupil, mouseX, mouseY, moodPupilOffsetX, moodPupilOffsetY])
 
   // Rotation transform for iris detail
   const irisRotation = useTransform(springX, [-maxOffset, maxOffset], [-15, 15])
@@ -187,10 +211,15 @@ function Eye({
                 : "0 2px 10px rgba(0,0,0,0.1)",
       }}
       animate={{
-        scaleY: isBlinking ? 0.05 : 1,
+        // Roast = suspicious squint; special/error = surprised wide eyes.
+        scaleY: isBlinking ? 0.05 : moodLook.scaleY,
+        scaleX: moodLook.scaleX,
+        rotate: moodLook.rotate,
       }}
       transition={{
-        scaleY: { duration: 0.1, ease: "easeInOut" },
+        scaleY: { duration: mood === "error" ? 0.12 : 0.24, ease: "easeInOut" },
+        scaleX: { duration: 0.24, ease: "easeOut" },
+        rotate: { duration: 0.24, ease: "easeOut" },
       }}
     >
       {/* Blood vessel details for realistic variant */}
@@ -417,6 +446,7 @@ export function EyeTracking({
   variant = "realistic",
   reactivePupil = true,
   showEyelids = true,
+  mood = "idle",
 }: EyeTrackingProps) {
   const mouseX = React.useRef(typeof window !== "undefined" ? window.innerWidth / 2 : 0)
   const mouseY = React.useRef(typeof window !== "undefined" ? window.innerHeight / 2 : 0)
@@ -535,6 +565,7 @@ export function EyeTracking({
           variant={variant}
           reactivePupil={reactivePupil}
           showEyelids={showEyelids}
+          mood={mood}
           mouseX={mouseX}
           mouseY={mouseY}
         />

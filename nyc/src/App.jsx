@@ -11,6 +11,7 @@ const App = () => {
   const [expression, setExpression] = useState('')
   const [result, setResult] = useState(0)
   const [history, setHistory] = useState([])
+  const [eyeMood, setEyeMood] = useState('idle')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,7 +42,7 @@ const App = () => {
         className="app-background w-full min-h-screen flex flex-col overflow-x-hidden"
       >
 
-      <Header />
+      <Header eyeMood={eyeMood} />
 
       <main className="flex-1 min-h-0 w-full grid grid-cols-1 sm:grid-cols-2">
 
@@ -52,11 +53,7 @@ const App = () => {
           flex items-center justify-center
           overflow-hidden
         ">
-          <Roast
-            expression={expression}
-            result={result}
-            history={history}
-          />
+          <Roast history={history} onMoodChange={setEyeMood} />
         </section>
 
         <section className="

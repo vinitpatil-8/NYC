@@ -5,7 +5,7 @@ import { evaluate } from 'mathjs';
 
 type Calculation = {
   expression: string
-  result: number
+  result: number | 'Error'
 }
 type CalcProps = {
   expression: string
@@ -165,6 +165,10 @@ const Calc = ({
     ) {
       setResult('Error')
       setResultPressed(false)
+      setHistory(prev => [
+        ...prev,
+        { expression, result: 'Error' }
+      ])
       return
     }
 
@@ -197,6 +201,11 @@ const Calc = ({
     } catch {
       setResult('Error')
       setResultPressed(false)
+
+      setHistory(prev => [
+        ...prev,
+        { expression, result: 'Error' }
+      ])
     }
   }
 

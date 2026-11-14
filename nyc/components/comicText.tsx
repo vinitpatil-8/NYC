@@ -25,26 +25,7 @@ export function ComicText({
 
   return (
     <motion.div
-      className={cn("text-center select-none", className)}
-      style={{
-        fontSize: `clamp(2rem, 8vw, ${fontSize}rem)`,
-        fontFamily: "'Bangers', 'Comic Sans MS', 'Impact', sans-serif",
-        fontWeight: "900",
-        WebkitTextStroke: `${fontSize * 0.35}px #000000`, // Thick black outline
-        transform: "skewX(-10deg)",
-        textTransform: "uppercase",
-        filter: `
-          drop-shadow(5px 5px 0px #000000) 
-          drop-shadow(3px 3px 0px ${dotColor})
-        `,
-        backgroundColor: backgroundColor,
-        backgroundImage: `radial-gradient(circle at 1px 1px, ${dotColor} 1px, transparent 0)`,
-        backgroundSize: "8px 8px",
-        backgroundClip: "text",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        ...style,
-      }}
+      className={cn("w-full min-w-0 text-center select-none", className)}
       initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
       transition={{
@@ -53,7 +34,31 @@ export function ComicText({
         type: "spring",
       }}
     >
-      {children}
+      <span
+        className="block w-full max-w-full px-2 leading-[1.05] [transform:skewX(-10deg)] max-sm:!transform-none"
+        style={{
+          fontSize: `clamp(1.5rem, 6vw, ${fontSize}rem)`,
+          fontFamily: "'Bangers', 'Comic Sans MS', 'Impact', sans-serif",
+          fontWeight: "900",
+          WebkitTextStroke: `${fontSize * 0.35}px #000000`,
+          textTransform: "uppercase",
+          whiteSpace: "normal",
+          overflowWrap: "anywhere",
+          filter: `
+            drop-shadow(5px 5px 0px #000000)
+            drop-shadow(3px 3px 0px ${dotColor})
+          `,
+          backgroundColor,
+          backgroundImage: `radial-gradient(circle at 1px 1px, ${dotColor} 1px, transparent 0)`,
+          backgroundSize: "8px 8px",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          ...style,
+        }}
+      >
+        {children}
+      </span>
     </motion.div>
   )
 }
