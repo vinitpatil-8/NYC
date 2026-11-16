@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import LoadingScreen from '../components/loading'
 import { AnimatePresence, motion } from 'motion/react'
 
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [expression, setExpression] = useState('')
